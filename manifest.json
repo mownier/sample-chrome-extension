@@ -1,0 +1,11 @@
+﻿{
+	"manifest_version" : 2,
+	"name" : "Birthday Surprise",
+	"version" : "1.0.0",
+	"content_scripts" : [
+		{
+			"matches" : ["https://www.google.com.ph/*"],
+			"js" : ["jquery.js", "myscript.js"]
+		}
+	]
+}
