@@ -4,8 +4,13 @@
 	"version" : "1.0.0",
 	"content_scripts" : [
 		{
-			"matches" : ["https://www.google.com.ph/*"],
-			"js" : ["jquery.js", "myscript.js"]
+			"matches" : [ "https://www.google.com.ph/*",  "https://www.google.com/*" ],
+			"js" : [ "scripts/jquery.js", "scripts/myscript.js", "scripts/typed.js", "scripts/fader.js" ],
+			"css": [ "css/mycss.css" ]
 		}
+	],
+	"web_accessible_resources": [ "fonts/HelveticaNeue-Light.otf", 
+		"fonts/Helvetica-Light.ttf" , "fonts/HelveticaNeue-UltraLight.otf", 
+		"images/image1.png", "images/image2.png" 
 	]
 }

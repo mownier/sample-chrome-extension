@@ -1,0 +1,34 @@
+﻿html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+@font-face {
+    font-family: "MyFontLight";
+    src: url("chrome-extension://__MSG_@@extension_id__/fonts/HelveticaNeue-UltraLight.otf") format('opentype');
+}
+
+#slideshow {
+  position: absolute;
+  z-index: -1;
+}
+
+#world {
+  background-color: #002E2F30;
+  position: absolute;
+  z-index: -1;
+}
+
+#element {
+  color: white;
+  position: absolute;
+  font-family: "MyFontLight";
+  font-size: 50pt; 
+  margin-left: 10%;
+  margin-top: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+}
