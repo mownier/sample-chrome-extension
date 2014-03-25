@@ -11,6 +11,6 @@
 	],
 	"web_accessible_resources": [ "fonts/HelveticaNeue-Light.otf", 
 		"fonts/Helvetica-Light.ttf" , "fonts/HelveticaNeue-UltraLight.otf", 
-		"images/image1.png", "images/image2.png" 
+		"images/image1.png", "images/image2.png", "images/image3.png" 
 	]
 }

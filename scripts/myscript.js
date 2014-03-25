@@ -14,10 +14,12 @@
 
     var v = getUrlVars(document.URL);
     var q = v.q;
+    console.log("q : " + q);
     if (q + "" == "happy+birthday+mounir") {
         imgUrl1 = chrome.extension.getURL('images/image1.png');
         imgUrl2 = chrome.extension.getURL('images/image2.png');
-        document.body.innerHTML = "<div id=\"slideshow\"><img src=\"" + imgUrl1 + "\" /><img src=\"" + imgUrl2 + "\" /></div><canvas id=\"world\"></canvas><div id=\"element\"></div>";
+        imgUrl3 = chrome.extension.getURL('images/image3.png');
+        document.body.innerHTML = "<div id=\"slideshow\"><img src=\"" + imgUrl1 + "\" /><img src=\"" + imgUrl2 + "\" /><img src=\"" + imgUrl3 + "\" /></div><canvas id=\"world\"></canvas><div id=\"element\"></div>";
         startConfetti();
         startMessage();
     }
@@ -27,13 +29,18 @@ function startMessage() {
 
     var fader = new Fader("slideshow");
     $("#element").typed({
-         strings: ["Happy Birthday Mounir!", "Yohoho"],
-        typeSpeed: 100, // typing speed
-        backDelay: 500, // pause before backspacing
+         strings: [ "It's the time of the year nga ma-acquire na nimo ang jersey ni michael jordan. yipeey! \\0\/", 
+                    "Today, you've just achieved the lowest prime number having prime number digits. wooaah! -0-0-",
+                    "Di mapugngan ang panahon, magkatiguwang jud ang human. hehehe.",
+                    "Pero ika nga sa isang kasabihan, age is just a state of mind.",
+                    "Naay ubang tao nga ganahan nga naa gihapon ang bata-bataon nga attitude, naa puy ganahan nga mo-grow-up kay naa pa'y mga nindot nga things beyond sa bata-bataon nga state.",
+                    "Ikaw, asa man ka sa duha? hahaha if i know naa ka sa duha, di ba? :P" ],
+        typeSpeed: 20, // typing speed
+        backDelay: 2000, // pause before backspacing
         loop: true,
         sentence_ending: function (sentence, index) {
             console.log("sentence :" + sentence + ", index: " + index);
-            fader.setTarget(index);
+            fader.setTarget(index%3);
         }
     });
 }

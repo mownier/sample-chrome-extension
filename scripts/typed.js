@@ -130,10 +130,21 @@
 						// and if the current array position is less than the stopping point
 						// if so, backspace after backDelay setting
 						if (curStrPos > curString.length && self.arrayPos < self.stopArray){
-							clearTimeout(clear);
-							var clear = setTimeout(function(){
-								self.backspace(curString, curStrPos);
-							}, self.backDelay);
+							// clearTimeout(clear);
+							// var clear = setTimeout(function(){
+							// 	self.backspace(curString, curStrPos);
+							// }, self.backDelay);
+							self.arrayPos++;
+							var nextIndex = self.arrayPos;
+							if (self.arrayPos >= self.strings.length) {
+							    nextIndex = 0;
+							}
+							
+							setTimeout(function() {
+								self.options.sentence_ending(self.strings[self.arrayPos - 1], nextIndex);
+						  		// Start typing
+								self.typewrite(self.strings[self.arrayPos], 0);
+						  	}, self.backDelay);
 						}
 
 						// else, keep typing
