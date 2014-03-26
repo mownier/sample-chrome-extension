@@ -1,46 +1,62 @@
 ﻿$(document).ready(function () {
     
-    function getUrlVars(href) {
-        var vars = [], hash;
-        var hashes = href.slice(href.indexOf('?') + 1).split('&');
-        for (var i = 0; i < hashes.length; i++) {
-            hash = hashes[i].split('=');
-            vars.push(hash[0]);
-            vars[hash[0]] = hash[1];
-        }
-        return vars;
-    }
+    // function getUrlVars(href) {
+    //     var vars = [], hash;
+    //     var hashes = href.slice(href.indexOf('?') + 1).split('&');
+    //     for (var i = 0; i < hashes.length; i++) {
+    //         hash = hashes[i].split('=');
+    //         vars.push(hash[0]);
+    //         vars[hash[0]] = hash[1];
+    //     }
+    //     return vars;
+    // }
 
 
-    var v = getUrlVars(document.URL);
-    var q = v.q;
-    console.log("q : " + q);
-    if (q + "" == "happy+birthday+mounir") {
-        imgUrl1 = chrome.extension.getURL('images/image1.png');
-        imgUrl2 = chrome.extension.getURL('images/image2.png');
-        imgUrl3 = chrome.extension.getURL('images/image3.png');
-        document.body.innerHTML = "<div id=\"slideshow\"><img src=\"" + imgUrl1 + "\" /><img src=\"" + imgUrl2 + "\" /><img src=\"" + imgUrl3 + "\" /></div><canvas id=\"world\"></canvas><div id=\"element\"></div>";
-        startConfetti();
-        startMessage();
-    }
+    // var v = getUrlVars(document.URL);
+    // var q = v.q;
+    // console.log("q : " + q);
+    // if (q + "" == "happy+birthday+jeckay") {
+    //     startSurprise();
+    // }
+    console.log("url : " + document.URL);
+    startSurprise();
 });
+
+function startSurprise() {
+    imgUrl1 = chrome.extension.getURL('images/image1.png');
+    imgUrl2 = chrome.extension.getURL('images/image2.png');
+    imgUrl3 = chrome.extension.getURL('images/image3.png');
+    imgUrl4 = chrome.extension.getURL('images/image4.png');
+    imgUrl5 = chrome.extension.getURL('images/image5.png');
+    imgUrl6 = chrome.extension.getURL('images/image6.png');
+    imgUrl7 = chrome.extension.getURL('images/image7.png');
+    imgUrl8 = chrome.extension.getURL('images/image8.png');
+    imgUrl9 = chrome.extension.getURL('images/image9.png');
+
+    document.body.innerHTML = "<div id=\"surprise_content\"><div id=\"surprise_slideshow\"><img src=\"" + imgUrl1 + "\" /><img src=\"" + imgUrl2 + "\" /><img src=\"" + imgUrl3 + "\" /><img src=\"" + imgUrl4 + "\" /><img src=\"" + imgUrl5 + "\" /><img src=\"" + imgUrl6 + "\" /><img src=\"" + imgUrl7 + "\" /><img src=\"" + imgUrl8 + "\" /><img src=\"" + imgUrl9 + "\" /></div><canvas id=\"surprise_confetti\"></canvas><div id=\"surprise_message\"></div></div>";
+    startConfetti();
+    startMessage();
+}
 
 function startMessage() {
 
-    var fader = new Fader("slideshow");
-    $("#element").typed({
-         strings: [ "It's the time of the year nga ma-acquire na nimo ang jersey ni michael jordan. yipeey! \\0\/", 
-                    "Today, you've just achieved the lowest prime number having prime number digits. wooaah! -0-0-",
-                    "Di mapugngan ang panahon, magkatiguwang jud ang human. hehehe.",
-                    "Pero ika nga sa isang kasabihan, age is just a state of mind.",
-                    "Naay ubang tao nga ganahan nga naa gihapon ang bata-bataon nga attitude, naa puy ganahan nga mo-grow-up kay naa pa'y mga nindot nga things beyond sa bata-bataon nga state.",
-                    "Ikaw, asa man ka sa duha? hahaha if i know naa ka sa duha, di ba? :P" ],
+    var fader = new Fader("surprise_slideshow");
+    $("#surprise_message").typed({
+         strings: [ "It's the time of the year nga ma-acquire na nimo ang jersey number ni michael jordan. yipeey! \\0\/", 
+                    "Today, you've just achieved the lowest prime number ever existed with digits that are also prime numbers. amazing! -0-0-",
+                    "Di mapugngan ang panahon, magkaanam jud og katiguwang ang mga human. OTL.",
+                    "Pero ika nga sa isang kasabihan, age is just a state of mind, right?. o.O",
+                    "I know nga mo-disagree ka kon ingnon ka'g tiguwang na ka (tinuod man pud). bwahaha :>",
+                    "Donchawori, you're free to say that you're 23 years young (fact). hehehe :P",
+                    "Without furher ado, HAPPY NATAL DAY, JECKAY! Stay healthy and drink yakult everyday. Wishing you many more birthdays to come. :)",
+                    "Have fun and enjoy your special day! alright! rakenrol! \\(o-o)/",
+                    "P.S. If you like to disable this message for a while, just approach The Maker or The Accomplice. :)" ],
         typeSpeed: 20, // typing speed
         backDelay: 2000, // pause before backspacing
         loop: true,
         sentence_ending: function (sentence, index) {
             console.log("sentence :" + sentence + ", index: " + index);
-            fader.setTarget(index%3);
+            fader.setTarget(index);
         }
     });
 }
@@ -55,7 +71,7 @@ function startConfetti() {
 
         PI_2 = 2 * Math.PI;
 
-        canvas = document.getElementById("world");
+        canvas = document.getElementById("surprise_confetti");
 
         context = canvas.getContext("2d");
 
